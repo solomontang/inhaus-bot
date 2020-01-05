@@ -1,0 +1,19 @@
+{
+  "name": "inhaus-bot",
+  "version": "1.0.0",
+  "description": "Discord bot to help run in-house events",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solomontang/inhaus-bot.git"
+  },
+  "author": "Solomon Tang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/solomontang/inhaus-bot/issues"
+  },
+  "homepage": "https://github.com/solomontang/inhaus-bot#readme"
+}
