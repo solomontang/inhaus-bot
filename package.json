@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/solomontang/inhaus-bot/issues"
   },
-  "homepage": "https://github.com/solomontang/inhaus-bot#readme"
+  "homepage": "https://github.com/solomontang/inhaus-bot#readme",
+  "dependencies": {
+    "discord.js": "~11.5.1"
+  }
 }
