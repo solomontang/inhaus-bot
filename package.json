@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "Discord bot to help run in-house events",
   "main": "bot.js",
+  "engines": {
+    "node": "13.6"
+  },
   "scripts": {
-    "start": "node bot.js"
+    "start": "node bot.js",
+    "start:dev": "node -r dotenv/config bot.js"
   },
   "repository": {
     "type": "git",
@@ -17,9 +21,12 @@
   },
   "homepage": "https://github.com/solomontang/inhaus-bot#readme",
   "dependencies": {
-    "discord.js": "~11.5.1"
+    "discord.js": "~11.5.1",
+    "discord.js-commando": "~0.10.0",
+    "sqlite": "~3.0.3"
   },
   "devDependencies": {
+    "dotenv": "~8.2.0",
     "eslint": "~6.8.0",
     "eslint-config-airbnb": "~18.0.1",
     "eslint-config-prettier": "~6.9.0",
