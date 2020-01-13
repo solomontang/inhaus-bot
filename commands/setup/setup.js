@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const { SettingsController } = require('../../controllers');
 
 module.exports = class InhausCommand extends Command {
   constructor(client) {
@@ -40,11 +41,20 @@ module.exports = class InhausCommand extends Command {
     this.state = {};
   }
 
-  run(_, args) {
-    const { provider } = this.client;
-    Object.keys(args).forEach(key => {
-      const { id, guild } = args[key];
-      provider.set(guild, key, id);
-    });
+  run(msg, args) {
+    try {
+      const { guild } = msg;
+      const settings = JSON.stringify(
+        Object.keys(args).reduce((acc, key) => {
+          const { id } = args[key];
+          acc[key] = id;
+          return acc;
+        }, {})
+      );
+
+      SettingsController.upsertSettings(guild, settings);
+    } catch (error) {
+      msg.reply('Settings could not be saved. Please try again');
+    }
   }
 };

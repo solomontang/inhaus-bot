@@ -3,6 +3,7 @@ const { CommandoClient, FriendlyError, SQLiteProvider } = require('discord.js-co
 const sqlite = require('sqlite');
 const path = require('path');
 const oneLine = require('common-tags').oneLine;
+const db = require('./db');
 
 const client = new CommandoClient({
   owner: '131209725646733312',
