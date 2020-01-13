@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
-const { CommandoClient, FriendlyError, SQLiteProvider } = require('discord.js-commando');
-const sqlite = require('sqlite');
+const { CommandoClient, FriendlyError } = require('discord.js-commando');
 const path = require('path');
 const oneLine = require('common-tags').oneLine;
 const db = require('./db');
