@@ -64,8 +64,4 @@ client.registry
   ])
   .registerCommandsIn(path.join(__dirname, 'commands'));
 
-sqlite.open(path.join(__dirname, 'settings.sqlite3')).then(db => {
-  client.setProvider(new SQLiteProvider(db));
-});
-
 client.login(process.env.BOT_TOKEN);
