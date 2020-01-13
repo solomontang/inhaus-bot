@@ -25,7 +25,7 @@ module.exports = class InhausCommand extends Command {
   async run(msg) {
     try {
       const { guild } = msg.channel;
-      const [payload] = await SettingsController.getSettings(guild);
+      const [payload = { settings: {} }] = await SettingsController.getSettings(guild);
       const { lobby, team1, team2, team3, team4 } = payload.settings;
       const lobbyChannel = getChannelFromGuild(guild, lobby);
       const team1Channel = getChannelFromGuild(guild, team1);
