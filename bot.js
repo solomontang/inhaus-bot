@@ -59,7 +59,8 @@ client.registry
   .registerDefaults()
   .registerGroups([
     ['setup', 'Setup'],
-    ['channels', 'Channels']
+    ['channels', 'Channels'],
+    ['start', 'Start']
   ])
   .registerCommandsIn(path.join(__dirname, 'commands'));
 
