@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node bot.js",
-    "start:dev": "node -r dotenv/config bot.js"
+    "start:dev": "nodemon -r dotenv/config bot.js"
   },
   "repository": {
     "type": "git",
