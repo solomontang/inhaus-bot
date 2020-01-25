@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 const { CommandoClient, FriendlyError } = require('discord.js-commando');
 const path = require('path');
-const oneLine = require('common-tags').oneLine;
+const { oneLine } = require('common-tags');
+// eslint-disable-next-line no-unused-vars
 const db = require('./db');
 
 const client = new CommandoClient({
@@ -59,6 +60,7 @@ client.registry
     ['setup', 'Setup'],
     ['channels', 'Channels'],
     ['start', 'Start'],
+    ['gather', 'Gather'],
   ])
   .registerCommandsIn(path.join(__dirname, 'commands'));
 
