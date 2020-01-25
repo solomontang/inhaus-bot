@@ -31,7 +31,7 @@ module.exports = class InhausCommand extends Command {
     });
   }
 
-  static async randomMatchmaking(msg, args, targetChannels) {
+  async randomMatchmaking(msg, args, targetChannels) {
     const { lobby } = targetChannels;
     const { teamSizes } = args;
     const teamChannels = Object.values(targetChannels).slice(1, teamSizes.length + 1);
@@ -53,6 +53,7 @@ module.exports = class InhausCommand extends Command {
       );
       console.log(teams);
     } catch (error) {
+      console.error(error);
       msg.reply('An error occurred during random team assignments.');
     }
   }
@@ -73,12 +74,7 @@ module.exports = class InhausCommand extends Command {
       const { guild } = msg.channel;
       const totalPlayers = teamSizes.reduce((total, members) => total + members);
 
-      const [payload = { settings: {} }] = await SettingsController.getSettings(guild);
-
-      const channels = Object.fromEntries(
-        Object.entries(payload.settings).map(([channelKey, channelId]) => [channelKey, guild.channels.get(channelId)])
-      );
-
+      const channels = await SettingsController.getSettings(guild);
       const currentPlayers = channels.lobby.members.size;
       if (currentPlayers < totalPlayers) {
         const missingPlayers = totalPlayers - currentPlayers;
@@ -91,7 +87,8 @@ module.exports = class InhausCommand extends Command {
       if (matchmakingType === RANKED) this.rankedMatchmaking(msg, args, channels);
       if (matchmakingType === UNRANKED) this.unrankedMatchmaking(msg, args, channels);
     } catch (error) {
-      msg.reply('Game could not be started.');
+      console.error(error);
+      msg.reply(`Game could not be started.`);
     }
   }
 };

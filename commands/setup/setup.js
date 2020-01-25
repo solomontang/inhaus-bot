@@ -40,7 +40,7 @@ module.exports = class InhausCommand extends Command {
     });
   }
 
-  static run(msg, args) {
+  run(msg, args) {
     try {
       const { guild } = msg;
       const settings = JSON.stringify(
@@ -53,6 +53,7 @@ module.exports = class InhausCommand extends Command {
 
       SettingsController.upsertSettings(guild, settings);
     } catch (error) {
+      console.error(error);
       msg.reply('Settings could not be saved. Please try again');
     }
   }

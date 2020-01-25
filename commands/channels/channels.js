@@ -45,6 +45,7 @@ module.exports = class InhausCommand extends Command {
         > **Team 4**: ${team4Channel.name}
       `);
     } catch (error) {
+      console.error(error);
       msg.reply('Something went wrong. Please try again');
     }
   }

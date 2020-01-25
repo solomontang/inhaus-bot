@@ -16,14 +16,18 @@ const upsertSettings = async (guild, settings) => {
     update.toString().replace(/^update\s.*\sset\s/i, '')
   );
 
-  return await knex.raw(query);
+  return knex.raw(query);
 };
 
 const getSettings = async (guild) => {
-  return await knex
+  const [payload = { settings: {} }] = await knex
     .select('settings')
     .from('settings')
     .where({ guild: guild.id });
+
+  return Object.fromEntries(
+    Object.entries(payload.settings).map(([channelKey, channelId]) => [channelKey, guild.channels.get(channelId)])
+  );
 };
 
 module.exports = {
