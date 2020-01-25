@@ -5,5 +5,5 @@ const UNRANKED = 'unranked';
 module.exports = {
   RANDOM,
   RANKED,
-  UNRANKED
+  UNRANKED,
 };

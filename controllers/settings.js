@@ -28,5 +28,5 @@ const getSettings = async guild => {
 
 module.exports = {
   getSettings,
-  upsertSettings
+  upsertSettings,
 };

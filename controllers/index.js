@@ -1,3 +1,3 @@
 module.exports = {
-  SettingsController: require('./settings')
+  SettingsController: require('./settings'),
 };

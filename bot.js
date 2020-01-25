@@ -7,7 +7,7 @@ const db = require('./db');
 const client = new CommandoClient({
   owner: '131209725646733312',
   commandPrefix: '!inhaus',
-  unknownCommandResponse: false
+  unknownCommandResponse: false,
 });
 
 client
@@ -15,9 +15,7 @@ client
   .on('warn', console.warn)
   .on('debug', console.log)
   .on('ready', () => {
-    console.log(
-      `Client ready; logged in as ${client.user.username}#${client.user.discriminator} (${client.user.id})`
-    );
+    console.log(`Client ready; logged in as ${client.user.username}#${client.user.discriminator} (${client.user.id})`);
   })
   .on('disconnect', () => {
     console.warn('Disconnected!');
@@ -60,7 +58,7 @@ client.registry
   .registerGroups([
     ['setup', 'Setup'],
     ['channels', 'Channels'],
-    ['start', 'Start']
+    ['start', 'Start'],
   ])
   .registerCommandsIn(path.join(__dirname, 'commands'));
 

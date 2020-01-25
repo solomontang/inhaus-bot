@@ -4,8 +4,8 @@ module.exports = {
     connection: { database: 'inhaus' },
     pool: {
       min: 1,
-      max: 20
-    }
+      max: 20,
+    },
   },
   production: {
     client: 'pg',
@@ -13,7 +13,7 @@ module.exports = {
     ssl: true,
     pool: {
       min: 1,
-      max: 20
-    }
-  }
+      max: 20,
+    },
+  },
 };

@@ -17,17 +17,17 @@ module.exports = class InhausCommand extends Command {
           type: 'string',
           validate: validateTeamSizes,
           parse: parseTeamSizes,
-          error: 'Team sizes are invalid.'
+          error: 'Team sizes are invalid.',
         },
         {
           key: 'matchmakingType',
           prompt: 'Matchmaking type (ranked, unranked, random):',
           type: 'string',
-          oneOf: [RANDOM, RANKED, UNRANKED]
-        }
+          oneOf: [RANDOM, RANKED, UNRANKED],
+        },
       ],
       argsCount: 2,
-      guildOnly: true
+      guildOnly: true,
     });
   }
 

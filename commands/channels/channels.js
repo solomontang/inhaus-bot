@@ -4,7 +4,7 @@ const { SettingsController } = require('../../controllers');
 const getChannelFromGuild = (guild, channelId) => {
   if (!channelId) {
     return {
-      name: 'Channel not set.'
+      name: 'Channel not set.',
     };
   }
 
@@ -18,7 +18,7 @@ module.exports = class InhausCommand extends Command {
       group: 'channels',
       memberName: 'channels',
       description: 'List the lobby and team channels.',
-      guildOnly: true
+      guildOnly: true,
     });
   }
 

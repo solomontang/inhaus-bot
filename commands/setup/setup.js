@@ -12,31 +12,31 @@ module.exports = class InhausCommand extends Command {
         {
           key: 'lobby',
           prompt: 'Lobby channel:',
-          type: 'channel'
+          type: 'channel',
         },
         {
           key: 'team1',
           prompt: 'Team 1:',
-          type: 'channel'
+          type: 'channel',
         },
         {
           key: 'team2',
           prompt: 'Team 2:',
-          type: 'channel'
+          type: 'channel',
         },
         {
           key: 'team3',
           prompt: 'Team 3:',
-          type: 'channel'
+          type: 'channel',
         },
         {
           key: 'team4',
           prompt: 'Team 4:',
-          type: 'channel'
-        }
+          type: 'channel',
+        },
       ],
       argsCount: 5,
-      guildOnly: true
+      guildOnly: true,
     });
     this.state = {};
   }

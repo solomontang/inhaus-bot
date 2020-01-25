@@ -4,7 +4,7 @@ const validateTeamSizes = teamSizes => VALID_TEAM_REGEX.test(teamSizes);
 const pr = new Intl.PluralRules('en-US');
 const playerSuffixes = new Map([
   ['one', 'player'],
-  ['other', 'players']
+  ['other', 'players'],
 ]);
 const formatAdditionalPlayers = count => {
   const rule = pr.select(count);
