@@ -38,7 +38,6 @@ module.exports = class InhausCommand extends Command {
       argsCount: 5,
       guildOnly: true,
     });
-    this.state = {};
   }
 
   run(msg, args) {
