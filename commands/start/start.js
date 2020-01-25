@@ -36,18 +36,25 @@ module.exports = class InhausCommand extends Command {
     const { teamSizes } = args;
     const teamChannels = Object.values(targetChannels).slice(1, teamSizes.length + 1);
     const playerPool = lobby.members.clone();
-    const teams = await teamSizes.map(async (teamSize, idx) => {
-      let team = [];
-      for (let i = 0; i < teamSize; i++) {
-        const playerKey = playerPool.randomKey();
-        const player = playerPool.get(playerKey);
-        if (player) {
-          team.push(player.setVoiceChannel(teamChannels[idx]));
-          playerPool.delete(playerKey);
-        }
-      }
-      return await Promise.allSettled(team);
-    });
+    try {
+      const teams = await Promise.all(
+        teamSizes.map(async (teamSize, idx) => {
+          let team = [];
+          for (let i = 0; i < teamSize; i++) {
+            const playerKey = playerPool.randomKey();
+            const player = playerPool.get(playerKey);
+            if (player) {
+              team.push(player.setVoiceChannel(teamChannels[idx]));
+              playerPool.delete(playerKey);
+            }
+          }
+          return await Promise.all(team);
+        })
+      );
+      console.log(teams);
+    } catch (error) {
+      msg.reply('An error occurred during random team assignments.');
+    }
   }
 
   _rankedMatchmaking = (msg, args, targetChannels) => {
@@ -77,7 +84,7 @@ module.exports = class InhausCommand extends Command {
         const missingPlayers = totalPlayers - currentPlayers;
         const additionalPlayers = formatAdditionalPlayers(missingPlayers);
         msg.reply(`${additionalPlayers} in ${channels.lobby} are required to start the match.`);
-        // return;
+        return;
       }
 
       if (matchmakingType === RANDOM) this._randomMatchmaking(msg, args, channels);
