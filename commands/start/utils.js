@@ -6,16 +6,31 @@ const playerSuffixes = new Map([
   ['one', 'player'],
   ['other', 'players'],
 ]);
+const isAre = new Map([
+  ['one', 'is'],
+  ['other', 'are'],
+]);
+
 const formatAdditionalPlayers = (count) => {
   const rule = pr.select(count);
   const suffix = playerSuffixes.get(rule);
   return `${count} additional ${suffix}`;
 };
 
+const formatNounPlurality = (count) => {
+  const rule = pr.select(count);
+  return isAre.get(rule);
+};
+
 const parseTeamSizes = (teamSizes) =>
   teamSizes
     .toLowerCase()
     .split('v')
-    .map((value) => parseInt(value));
+    .map((value) => parseInt(value, 10));
 
-module.exports = { formatAdditionalPlayers, parseTeamSizes, validateTeamSizes };
+module.exports = {
+  formatAdditionalPlayers,
+  formatNounPlurality,
+  parseTeamSizes,
+  validateTeamSizes,
+};

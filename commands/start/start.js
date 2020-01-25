@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { SettingsController } = require('../../controllers');
-const { formatAdditionalPlayers, parseTeamSizes, validateTeamSizes } = require('./utils');
+const { formatAdditionalPlayers, formatNounPlurality, parseTeamSizes, validateTeamSizes } = require('./utils');
 const { RANDOM, RANKED, UNRANKED } = require('./constants');
 
 module.exports = class InhausCommand extends Command {
@@ -79,7 +79,8 @@ module.exports = class InhausCommand extends Command {
       if (currentPlayers < totalPlayers) {
         const missingPlayers = totalPlayers - currentPlayers;
         const additionalPlayers = formatAdditionalPlayers(missingPlayers);
-        msg.reply(`${additionalPlayers} in ${channels.lobby} are required to start the match.`);
+        const isAre = formatNounPlurality(missingPlayers);
+        msg.reply(`${additionalPlayers} in ${channels.lobby} ${isAre} required to start the match.`);
         return;
       }
 
