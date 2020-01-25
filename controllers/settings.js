@@ -19,7 +19,7 @@ const upsertSettings = async (guild, settings) => {
   return await knex.raw(query);
 };
 
-const getSettings = async guild => {
+const getSettings = async (guild) => {
   return await knex
     .select('settings')
     .from('settings')
