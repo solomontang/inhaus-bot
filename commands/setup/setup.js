@@ -36,7 +36,9 @@ module.exports = class InhausCommand extends Command {
         },
       ],
       argsCount: 5,
+      guarded: true,
       guildOnly: true,
+      userPermissions: ['MANAGE_CHANNELS'],
     });
   }
 
