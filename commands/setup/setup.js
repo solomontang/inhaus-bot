@@ -40,7 +40,7 @@ module.exports = class InhausCommand extends Command {
     });
   }
 
-  run(msg, args) {
+  static run(msg, args) {
     try {
       const { guild } = msg;
       const settings = JSON.stringify(

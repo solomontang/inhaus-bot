@@ -31,16 +31,16 @@ module.exports = class InhausCommand extends Command {
     });
   }
 
-  async _randomMatchmaking(msg, args, targetChannels) {
-    const { lobby, team1 } = targetChannels;
+  static async randomMatchmaking(msg, args, targetChannels) {
+    const { lobby } = targetChannels;
     const { teamSizes } = args;
     const teamChannels = Object.values(targetChannels).slice(1, teamSizes.length + 1);
     const playerPool = lobby.members.clone();
     try {
       const teams = await Promise.all(
         teamSizes.map(async (teamSize, idx) => {
-          let team = [];
-          for (let i = 0; i < teamSize; i++) {
+          const team = [];
+          for (let i = 0; i < teamSize; i += 1) {
             const playerKey = playerPool.randomKey();
             const player = playerPool.get(playerKey);
             if (player) {
@@ -48,7 +48,7 @@ module.exports = class InhausCommand extends Command {
               playerPool.delete(playerKey);
             }
           }
-          return await Promise.all(team);
+          return Promise.all(team);
         })
       );
       console.log(teams);
@@ -57,15 +57,15 @@ module.exports = class InhausCommand extends Command {
     }
   }
 
-  _rankedMatchmaking = (msg, args, targetChannels) => {
+  rankedMatchmaking(msg, args, targetChannels) {
     msg.reply('Ranked matchmaking is not available yet. Falling back to random matching.');
-    this._randomMatchmaking(msg, args, targetChannels);
-  };
+    this.randomMatchmaking(msg, args, targetChannels);
+  }
 
-  _unrankedMatchmaking = (msg, args, targetChannels) => {
+  unrankedMatchmaking(msg, args, targetChannels) {
     msg.reply('Unranked matchmaking is not available yet. Falling back to random matching.');
-    this._randomMatchmaking(msg, args, targetChannels);
-  };
+    this.randomMatchmaking(msg, args, targetChannels);
+  }
 
   async run(msg, args) {
     try {
@@ -87,9 +87,9 @@ module.exports = class InhausCommand extends Command {
         return;
       }
 
-      if (matchmakingType === RANDOM) this._randomMatchmaking(msg, args, channels);
-      if (matchmakingType === RANKED) this._rankedMatchmaking(msg, args, channels);
-      if (matchmakingType === UNRANKED) this._unrankedMatchmaking(msg, args, channels);
+      if (matchmakingType === RANDOM) this.randomMatchmaking(msg, args, channels);
+      if (matchmakingType === RANKED) this.rankedMatchmaking(msg, args, channels);
+      if (matchmakingType === UNRANKED) this.unrankedMatchmaking(msg, args, channels);
     } catch (error) {
       msg.reply('Game could not be started.');
     }
