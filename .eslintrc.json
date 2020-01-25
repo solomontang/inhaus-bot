@@ -14,7 +14,7 @@
   },
   "plugins": ["prettier"],
   "rules": {
-    "class-methods-use-this": ["error", { "exceptMethods": ["run"] }],
+    "class-methods-use-this": ["off"],
     "prettier/prettier": ["error"]
   }
 }
