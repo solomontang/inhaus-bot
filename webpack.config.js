@@ -4,8 +4,9 @@ const nodeExternals = require('webpack-node-externals');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
+  devtool: 'inline-source-map',
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['.ts', '.js'],
   },
   entry: ['webpack/hot/poll?100', './src/bot.ts'],
   target: 'node',
@@ -14,7 +15,7 @@ module.exports = {
       whitelist: ['webpack/hot/poll?100'],
     }),
   ],
-  mode: 'production',
+  mode: 'development',
   module: {
     rules: [
       {

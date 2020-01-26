@@ -44,7 +44,7 @@ class Start extends Command {
     const { lobby } = targetChannels;
     const { teamSizes } = args;
     const teamChannels = Object.values(targetChannels).slice(1, teamSizes.length + 1);
-    const playerPool = lobby.members.clone();
+    const playerPool = lobby?.members?.clone();
     try {
       const teams = await Promise.all(
         teamSizes.map(async (teamSize, idx) => {

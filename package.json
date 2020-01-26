@@ -2,7 +2,7 @@
   "name": "inhaus-bot",
   "version": "1.0.0",
   "description": "Discord bot to help run in-house events",
-  "main": "bot.js",
+  "main": "dist/bot.js",
   "engines": {
     "node": "13.6"
   },

@@ -1,7 +1,7 @@
 import { CommandoClient, FriendlyError } from 'discord.js-commando';
 import { oneLine } from 'common-tags';
 
-import db from './db';
+import dbInstance from './db';
 import Channels from './commands/channels/channels';
 import Gather from './commands/gather/gather';
 import Setup from './commands/setup/setup';
