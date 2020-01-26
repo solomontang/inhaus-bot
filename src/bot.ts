@@ -1,8 +1,11 @@
-import path from 'path';
 import { CommandoClient, FriendlyError } from 'discord.js-commando';
 import { oneLine } from 'common-tags';
 
 import db from './db';
+import Channels from './commands/channels/channels';
+import Gather from './commands/gather/gather';
+import Setup from './commands/setup/setup';
+import Start from './commands/start/start';
 
 const client = new CommandoClient({
   owner: '131209725646733312',
@@ -61,7 +64,7 @@ client.registry
     ['start', 'Start'],
     ['gather', 'Gather'],
   ])
-  .registerCommandsIn(path.join(__dirname, 'commands'));
+  .registerCommands([Start, Setup, Gather, Channels]);
 
 client.login(process.env.BOT_TOKEN);
 
