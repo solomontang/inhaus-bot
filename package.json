@@ -7,9 +7,11 @@
     "node": "13.6"
   },
   "scripts": {
-    "build:dev": "webpack --config webpack.config.js --env.development",
+    "build": "webpack --config webpack.config.js",
+    "build:watch": "webpack --watch --config webpack.config.js",
     "start": "node dist/bot.js",
-    "start:dev": "nodemon -r dotenv/config dist/bot.js"
+    "start:watch": "nodemon -r dotenv/config dist/bot.js",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
