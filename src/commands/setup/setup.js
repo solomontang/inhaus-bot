@@ -1,7 +1,7 @@
-const { Command } = require('discord.js-commando');
-const { SettingsController } = require('../../controllers');
+import { Command } from 'discord.js-commando';
+import { SettingsController } from '../../controllers';
 
-module.exports = class InhausCommand extends Command {
+class Setup extends Command {
   constructor(client) {
     super(client, {
       name: 'setup',
@@ -59,4 +59,6 @@ module.exports = class InhausCommand extends Command {
       msg.reply('Settings could not be saved. Please try again');
     }
   }
-};
+}
+
+export default Setup;

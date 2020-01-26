@@ -1,7 +1,7 @@
-const { Command } = require('discord.js-commando');
-const { SettingsController } = require('../../controllers');
+import { Command } from 'discord.js-commando';
+import { SettingsController } from '../../controllers';
 
-module.exports = class InhausCommand extends Command {
+class Gather extends Command {
   constructor(client) {
     super(client, {
       name: 'gather',
@@ -32,4 +32,6 @@ module.exports = class InhausCommand extends Command {
       msg.reply('An error occured when attempting to gather all players to the lobby.');
     }
   }
-};
+}
+
+export default Gather;
