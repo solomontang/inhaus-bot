@@ -1,8 +1,17 @@
-import { Command } from 'discord.js-commando';
+import { Command, CommandoClient, CommandMessage } from 'discord.js-commando';
 import { SettingsController } from '../../controllers';
+import { VoiceChannel } from 'discord.js';
+
+type SetupArguments = {
+  lobby: VoiceChannel;
+  team1: VoiceChannel;
+  team2: VoiceChannel;
+  team3: VoiceChannel;
+  team4: VoiceChannel;
+};
 
 class Setup extends Command {
-  constructor(client) {
+  constructor(client: CommandoClient) {
     super(client, {
       name: 'setup',
       group: 'setup',
@@ -38,16 +47,17 @@ class Setup extends Command {
       argsCount: 5,
       guarded: true,
       guildOnly: true,
+      // @ts-ignore
       userPermissions: ['MANAGE_CHANNELS'],
     });
   }
-
-  run(msg, args) {
+  // @ts-ignore Outdated type def does not allow null returns
+  run(msg: CommandMessage, args: SetupArguments) {
     try {
       const { guild } = msg;
       const settings = JSON.stringify(
         Object.keys(args).reduce((acc, key) => {
-          const { id } = args[key];
+          const { id }: VoiceChannel = args[key];
           acc[key] = id;
           return acc;
         }, {})

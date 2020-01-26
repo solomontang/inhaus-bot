@@ -1,8 +1,9 @@
-import { Command } from 'discord.js-commando';
+import { Command, CommandoClient, CommandMessage } from 'discord.js-commando';
 import { SettingsController } from '../../controllers';
+import { VoiceChannel } from 'discord.js';
 
 class Gather extends Command {
-  constructor(client) {
+  constructor(client: CommandoClient) {
     super(client, {
       name: 'gather',
       group: 'gather',
@@ -12,14 +13,15 @@ class Gather extends Command {
     });
   }
 
-  async run(msg) {
+  // @ts-ignore Outdated type def does not allow undefined returns
+  async run(msg: CommandMessage) {
     try {
       const { guild } = msg;
 
       const { lobby, ...teamChannels } = await SettingsController.getSettings(guild);
 
       const allMovedPlayers = [];
-      Object.values(teamChannels).forEach((channel) => {
+      Object.values(teamChannels).forEach((channel: VoiceChannel) => {
         const { members } = channel;
         if (members && members.size) {
           members.tap((member) => {
