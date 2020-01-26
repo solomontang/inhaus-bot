@@ -8,8 +8,8 @@
   },
   "scripts": {
     "build:dev": "webpack --config webpack.config.js --env.development",
-    "start": "node bot.js",
-    "start:dev": "nodemon -r dotenv/config bot.js"
+    "start": "node dist/bot.js",
+    "start:dev": "nodemon -r dotenv/config dist/bot.js"
   },
   "repository": {
     "type": "git",
