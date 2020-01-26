@@ -24,13 +24,14 @@
   "dependencies": {
     "common-tags": "~1.8.0",
     "discord.js": "~11.5.1",
-    "discord.js-commando": "^0.10.0",
+    "discord.js-commando": "~0.10.0",
     "knex": "~0.20.7",
     "pg": "~7.17.1"
   },
   "devDependencies": {
-    "@types/common-tags": "^1.8.0",
-    "@types/node": "^13.5.0",
+    "@types/common-tags": "~1.8.0",
+    "@types/node": "~13.5.0",
+    "babel-loader": "~8.0.6",
     "dotenv": "~8.2.0",
     "eslint": "~6.8.0",
     "eslint-config-airbnb": "~18.0.1",
@@ -39,13 +40,12 @@
     "eslint-plugin-import": "~2.20.0",
     "eslint-plugin-jsx-a11y": "~6.2.3",
     "eslint-plugin-prettier": "~3.1.2",
-    "import-sort-parser-typescript": "^6.0.0",
+    "fork-ts-checker-webpack-plugin": "~4.0.2",
     "prettier": "1.19.1",
-    "source-map-loader": "~0.2.4",
     "ts-loader": "~6.2.1",
     "typescript": "~3.7.5",
     "webpack": "~4.41.5",
-    "webpack-cli": "^3.3.10",
+    "webpack-cli": "~3.3.10",
     "webpack-node-externals": "~1.7.2"
   }
 }

@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -20,21 +21,15 @@ module.exports = {
       {
         test: /\.ts(x?)$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'ts-loader',
-          },
-        ],
-      },
-      {
-        enforce: 'pre',
-        test: /\.js$/,
-        loader: 'source-map-loader',
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true,
+        },
       },
     ],
   },
   mode: 'development',
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [new ForkTsCheckerWebpackPlugin(), new webpack.HotModuleReplacementPlugin()],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bot.js',
